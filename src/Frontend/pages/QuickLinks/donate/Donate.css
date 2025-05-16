@@ -1,0 +1,69 @@
+.donatebutton{
+    color: blue;
+}
+.donatecontainer h1{
+    color: aliceblue;
+}
+/* Contenedor principal */
+.donatecontainer {
+  max-width: 800px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background-color:transparent;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Títulos */
+.donate-container h1 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.donate-container h2 {
+  font-size: 1.5rem;
+  color: #2980b9;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Párrafos */
+.donate-container p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Lista de mejoras */
+.donate-container ul {
+  margin-left: 1.5rem;
+  padding-left: 1rem;
+}
+
+.donate-container ul li {
+  margin-bottom: 0.6rem;
+  font-size: 1rem;
+}
+
+/* Botón */
+.donatebutton {
+  margin-top: 2rem;
+  padding: 0.9rem 1.8rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.donatebutton:hover {
+  background-color: #2980b9;
+  transform: scale(1.03);
+}

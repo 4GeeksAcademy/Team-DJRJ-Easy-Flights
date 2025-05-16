@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom"; // Importa Link para navegación interna
 import "./AboutUs.css";
 
+// Datos del equipo
 const teamMembers = [
   {
     name: "Daniel Alejandro Landa",
@@ -44,15 +46,15 @@ const teamMembers = [
   },
 ];
 
+// Tarjetas de información
 const diagramCards = [
   {
-    title: " Nuestra Misión",
+    title: "Nuestra Misión",
     content:
       "Brindar una plataforma confiable y sencilla para planificar viajes personalizados.",
   },
-  
   {
-    title: "Objetivo ",
+    title: "Objetivo",
     content:
       "Permitir la creación de presupuestos precisos para todo tipo de viajes.",
   },
@@ -60,18 +62,17 @@ const diagramCards = [
     title: "Promoviendo",
     content: "Acceso a paquetes de viajes prediseñados por agencias aliadas.",
   },
-  
 ];
 
 const AboutUs = () => {
   return (
     <div className="about-container">
-      <header className="about-header">
-      </header>
+      <header className="about-header"></header>
 
       <section className="main-image">
         <img src="Icono-Posible.png" alt="Equipo EasyFlights" />
       </section>
+
       <section className="container">
         <h2>
           Bienvenido a EasyFlights, tu plataforma de confianza para planificar
@@ -83,7 +84,8 @@ const AboutUs = () => {
           optimizar cada etapa de tu viaje.
         </h2>
       </section>
-      <br></br>
+
+      <br />
 
       <section className="diagram-section">
         <div className="diagram-grid">
@@ -95,12 +97,14 @@ const AboutUs = () => {
           ))}
         </div>
       </section>
+
       <h2 className="container">
         Detrás de EasyFlights estamos Daniel, Javier, Jean Pierre y Rafa, un
         equipo comprometido con la innovación y la experiencia del usuario.
         Combinamos nuestra pasión por la tecnología y los viajes para ofrecerte
-        una solución clara, funcional y confiable.t
+        una solución clara, funcional y confiable.
       </h2>
+
       <section className="team">
         {teamMembers.map((member, index) => (
           <div className="flip-card-au" key={index}>
@@ -119,13 +123,12 @@ const AboutUs = () => {
                 >
                   GitHub
                 </a>{" "}
-                |
+                |{" "}
                 <a
                   href={member.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {" "}
                   Instagram
                 </a>
               </div>
@@ -133,6 +136,14 @@ const AboutUs = () => {
           </div>
         ))}
       </section>
+
+      {/* Enlace al final hacia la página de donaciones */}
+      <div className="donate-link-wrapper">
+        <p>¿Te gustaría apoyar el desarrollo y crecimiento de EasyFlights?</p>
+        <Link to="/donate" className="donate-link">
+          Conoce cómo puedes colaborar con el proyecto
+        </Link>
+      </div>
     </div>
   );
 };
