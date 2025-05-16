@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useParams} from "react-router-dom";
-import { Calendar} from "lucide-react";
+import { useParams } from "react-router-dom";
+import { Calendar } from "lucide-react";
 import "./OffersDetails.css"
 import Comments from "../../components/Comments/Comments";
 import { useAuth } from "../../hooks/useAuthContext";
@@ -64,8 +64,8 @@ export const OffersDetails = () => {
       .then((data) => {
         console.log("Comment posted:", data);
         setNewComment("");
-        document.getElementById("exampleModal").classList.remove("show"); 
-        document.body.classList.remove("modal-open");                     
+        document.getElementById("exampleModal").classList.remove("show");
+        document.body.classList.remove("modal-open");
         setsSelectedRating("");
         getComments();
 
@@ -208,9 +208,9 @@ export const OffersDetails = () => {
                     </div>
 
                     {/*button trigger modal*/}
-                    <button 
+                    <button
                       type="button"
-                      className={`btn btn-primary${!isCompany ? "d-none" : ""}`}
+                      className={`btn-add-comment ${isCompany ? "d-none" : ""}`}
                       onClick={() => {
                         const modalEl = document.getElementById("exampleModal");
                         if (modalEl && window.bootstrap) {
@@ -319,9 +319,11 @@ export const OffersDetails = () => {
                                 </div>
 
                               </div>
-                              <button type="submit" className="button-submit" >
-                                Submit Comment
-                              </button>
+                              <div className="d-flex justify-content-end">
+                                <button type="submit" className="button-submit">
+                                  Submit Comment
+                                </button>
+                              </div>
                             </form>
                           </div>
                           <div className="modal-footer">
@@ -331,9 +333,6 @@ export const OffersDetails = () => {
                               data-bs-dismiss="modal"
                             >
                               Close
-                            </button>
-                            <button type="button" className="button-save" onClick={() => addNewComment()}>
-                              Save changes
                             </button>
                           </div>
                         </div>

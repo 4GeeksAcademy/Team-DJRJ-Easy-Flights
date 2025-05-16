@@ -15,9 +15,9 @@ const AboutUser = () => {
         subscription: "",
         avatar: null,
     });
-    const [history, setHistory] = useState([]);
-    const [purchases, setPurchases] = useState([]);
-    const [activeTab, setActiveTab] = useState("history");87
+    // const [history, setHistory] = useState([]);
+    // const [purchases, setPurchases] = useState([]);
+    const [activeTab, setActiveTab] = useState("subscription");
     const [isLoading, setIsLoading] = useState(true);
     const [notification, setNotification] = useState({
         show: false,
@@ -40,67 +40,67 @@ const AboutUser = () => {
                 avatar: userObj.avatar || null,
             }));
             
-            // Fetch user flight history and purchases once user data is loaded
-            fetchUserFlights(userObj.id);
-            fetchUserPurchases(userObj.id);
+            // // Fetch user flight history and purchases once user data is loaded
+            // fetchUserFlights(userObj.id);
+            // fetchUserPurchases(userObj.id);
             
             setIsLoading(false);
         }
     }, []);
 
-    // Función para obtener el historial de vuelos
-    const fetchUserFlights = async (id) => {
-        try {
-            // Verificar que tenemos un ID de usuario
-            const userId = id || user?.id;
-            if (!userId) return;
+    // // Función para obtener el historial de vuelos
+    // const fetchUserFlights = async (id) => {
+    //     try {
+    //         // Verificar que tenemos un ID de usuario
+    //         const userId = id || user?.id;
+    //         if (!userId) return;
 
-            const response = await fetch(`${URL}/api/user/${userId}/flights`, {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${access_token}`,
-                },
-            });
+    //         const response = await fetch(`${URL}/api/user/${userId}/flights`, {
+    //             method: "GET",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //                 Authorization: `Bearer ${access_token}`,
+    //             },
+    //         });
 
-            if (!response.ok) {
-                throw new Error(`Error ${response.status}: ${response.statusText}`);
-            }
+    //         if (!response.ok) {
+    //             throw new Error(`Error ${response.status}: ${response.statusText}`);
+    //         }
 
-            const data = await response.json();
-            setHistory(data.flights || []);
-        } catch (error) {
-            console.error("Error fetching flight history:", error);
-            showNotification("Error al cargar historial de vuelos", "error");
-        }
-    };
+    //         const data = await response.json();
+    //         setHistory(data.flights || []);
+    //     } catch (error) {
+    //         console.error("Error fetching flight history:", error);
+    //         showNotification("Error al cargar historial de vuelos", "error");
+    //     }
+    // };
 
-    // Función para obtener las compras del usuario
-    const fetchUserPurchases = async (id) => {
-        try {
-            // Verificar que tenemos un ID de usuario
-            const userId = id || user?.id;
-            if (!userId) return;
+    // // Función para obtener las compras del usuario
+    // const fetchUserPurchases = async (id) => {
+    //     try {
+    //         // Verificar que tenemos un ID de usuario
+    //         const userId = id || user?.id;
+    //         if (!userId) return;
 
-            const response = await fetch(`${URL}/api/user/${id}/purchases`, {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${access_token}`,
-                },
-            });
+    //         const response = await fetch(`${URL}/api/user/${userId}/purchases`, {
+    //             method: "GET",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //                 Authorization: `Bearer ${access_token}`,
+    //             },
+    //         });
 
-            if (!response.ok) {
-                throw new Error(`Error ${response.status}: ${response.statusText}`);
-            }
+    //         if (!response.ok) {
+    //             throw new Error(`Error ${response.status}: ${response.statusText}`);
+    //         }
 
-            const data = await response.json();
-            setPurchases(data.purchases || []);
-        } catch (error) {
-            console.error("Error fetching purchases:", error);
-            showNotification("Error al cargar historial de compras", "error");
-        }
-    };
+    //         const data = await response.json();
+    //         setPurchases(data.purchases || []);
+    //     } catch (error) {
+    //         console.error("Error fetching purchases:", error);
+    //         showNotification("Error al cargar historial de compras", "error");
+    //     }
+    // };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -342,7 +342,7 @@ const AboutUser = () => {
                     </div>
 
                     <nav className="ausr-nav">
-                        <button
+                        {/* <button
                             onClick={() => setActiveTab("history")}
                             className={`ausr-nav-btn ${
                                 activeTab === "history" ? "active" : ""
@@ -362,8 +362,8 @@ const AboutUser = () => {
                                 <polyline points="12 6 12 12 16 14"></polyline>
                             </svg>
                             Historial de Viajes
-                        </button>
-                        <button
+                        </button> */}
+                        {/* <button
                             onClick={() => setActiveTab("purchases")}
                             className={`ausr-nav-btn ${
                                 activeTab === "purchases" ? "active" : ""
@@ -384,8 +384,8 @@ const AboutUser = () => {
                                 <path d="M16 10a4 4 0 0 1-8 0"></path>
                             </svg>
                             Compras
-                        </button>
-                        <button
+                        </button> */}
+                        {/* <button
                             onClick={() => setActiveTab("subscription")}
                             className={`ausr-nav-btn ${
                                 activeTab === "subscription" ? "active" : ""
@@ -405,12 +405,12 @@ const AboutUser = () => {
                                 <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
                             </svg>
                             Subscripción
-                        </button>
+                        </button> */}
                     </nav>
                 </aside>
 
                 <section className="ausr-main">
-                    {activeTab === "history" && (
+                    {/* {activeTab === "history" && (
                         <motion.div
                             className="ausr-tab-content"
                             variants={containerVariants}
@@ -466,72 +466,66 @@ const AboutUser = () => {
                                 </div>
                             )}
                         </motion.div>
-                    )}
+                    )} */}
 
-                    {activeTab === "purchases" && (
-    <motion.div
-        className="ausr-tab-content"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-    >
-        <h2 className="ausr-section-title">Historial de Compras</h2>
-        
-        {purchases.length > 0 ? (
-            <div className="ausr-cards-grid">
-                {purchases.map((purchase, index) => (
-                    <motion.div
-                        key={index}
-                        className="ausr-card"
-                        variants={itemVariants}
-                    >
-                        <div className="ausr-card-header">
-                            <h3>Compra #{purchase.id}</h3>
-                            <span className="ausr-card-date">
-                                {formatDate(purchase.purchase_date)}  {/* Asumimos que `purchase.purchase_date` tiene la fecha */}
-                            </span>
-                        </div>
-                        <div className="ausr-card-body">
-                            <p><strong>Producto:</strong> {purchase.offer.title}</p> {/* Muestra el título de la oferta */}
-                            <p><strong>Descripción:</strong> {purchase.offer.description}</p> {/* Descripción de la oferta */}
-                            <p><strong>Cantidad:</strong> {purchase.quantity}</p> {/* Suponemos que tienes la cantidad de productos */}
-                            <p className="ausr-card-price">
-                                <strong>Total:</strong> €{purchase.total_amount} {/* Muestra el monto total de la compra */}
-                            </p>
-
-                            {/* Muestra detalles del pago */}
-                            <div className="payment-details">
-                                <p><strong>Método de pago:</strong> {purchase.payment.payment_method}</p>
-                                <p><strong>Tarjeta:</strong> **** **** **** {purchase.payment.card_number.slice(-4)}</p>
-                            </div>
-                        </div>
-                    </motion.div>
-                ))}
-            </div>
-        ) : (
-            <div className="ausr-empty-state">
-                <svg
-                    className="ausr-empty-icon"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                >
-                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <path d="M16 10a4 4 0 0 1-8 0"></path>
-                </svg>
-                <h3>No tienes compras recientes</h3>
-                <p>
-                    Tu historial de compras aparecerá aquí una vez que hayas realizado alguna compra.
-                </p>
-            </div>
-        )}
-    </motion.div>
-)}
+                    {/* {activeTab === "purchases" && (
+                        <motion.div
+                            className="ausr-tab-content"
+                            variants={containerVariants}
+                            initial="hidden"
+                            animate="visible"
+                        >
+                            <h2 className="ausr-section-title">Historial de Compras</h2>
+                            
+                            {purchases.length > 0 ? (
+                                <div className="ausr-cards-grid">
+                                    {purchases.map((purchase, index) => (
+                                        <motion.div
+                                            key={index}
+                                            className="ausr-card"
+                                            variants={itemVariants}
+                                        >
+                                            <div className="ausr-card-header">
+                                                <h3>Compra #{purchase.id}</h3>
+                                                <span className="ausr-card-date">
+                                                    {formatDate(purchase.date)}
+                                                </span>
+                                            </div>
+                                            <div className="ausr-card-body">
+                                                <p>Producto: {purchase.item}</p>
+                                                <p>Cantidad: {purchase.quantity}</p>
+                                                <p className="ausr-card-price">
+                                                    Total: ${purchase.total}
+                                                </p>
+                                            </div>
+                                        </motion.div>
+                                    ))}
+                                </div>
+                            ) : (
+                                <div className="ausr-empty-state">
+                                    <svg
+                                        className="ausr-empty-icon"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                    >
+                                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                                    </svg>
+                                    <h3>No tienes compras recientes</h3>
+                                    <p>
+                                        Tu historial de compras aparecerá aquí una vez que
+                                        hayas realizado alguna compra.
+                                    </p>
+                                </div>
+                            )}
+                        </motion.div>
+                    )} */}
 
                     {activeTab === "subscription" && (
                         <motion.div

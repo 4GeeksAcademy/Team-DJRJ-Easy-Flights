@@ -28,14 +28,14 @@ const LanguageSelector = ({ onLanguageChange }) => {
         onClick={() => handleLanguageChange('es')}
         title="Español"
       >
-        &#x1F1EA;&#x1F1F8;
+        <img src="/icons8-españa-48.png" alt="Español" width={24} height={24} />
       </span>
       <span 
         className={`language-option ${currentLanguage === 'en' ? 'active' : ''}`}
         onClick={() => handleLanguageChange('en')}
         title="English"
       >
-        &#x1F1FA;&#x1F1F8;
+        <img src="/icons8-estados-unidos-48.png" alt="English" width={24} height={24} />
       </span>
     </div>
   );
